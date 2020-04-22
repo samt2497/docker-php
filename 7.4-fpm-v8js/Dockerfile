@@ -31,7 +31,6 @@ RUN apt-get update -y \
   && cd /tmp \
   && git clone https://github.com/phpv8/v8js.git \
   && cd v8js \
-  && git checkout clean-timezone-fix \
   && phpize \
   && ./configure --with-v8js=/opt/v8 LDFLAGS="-lstdc++" \
   && make \
