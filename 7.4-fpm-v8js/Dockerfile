@@ -35,4 +35,10 @@ RUN apt-get update -y \
   && ./configure --with-v8js=/opt/v8 LDFLAGS="-lstdc++" \
   && make \
   && make install \
-  && docker-php-ext-enable v8js
+  && docker-php-ext-enable v8js \
+  # Trim size
+  && rm -rf /tmp/* \
+	&& apt-get remove -y git build-essential python \
+	&& apt-get autoremove -y \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
